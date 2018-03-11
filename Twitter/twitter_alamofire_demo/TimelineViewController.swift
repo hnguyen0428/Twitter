@@ -79,7 +79,12 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         APIManager.shared.logout()
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? DetailTweetViewController {
+            let cell = sender as! TweetCell
+            vc.tweet = cell.tweet
+        }
+    }
     
     /*
      // MARK: - Navigation
